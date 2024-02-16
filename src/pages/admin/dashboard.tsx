@@ -1,13 +1,12 @@
-import toast from "react-hot-toast";
 import { BiMaleFemale } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
-import { useSelector } from "react-redux";
-import AdminSidebar from "../../components/admin/AdminSidebar";
-import { BarChart, DoughnutChart } from "../../components/admin/Charts";
-import Table from "../../components/admin/DashboardTable";
-import Loader from "../../components/admin/Loader";
+import data from "../../assets/data.json"
+import AdminSidebar from "../../Components/admin/AdminSidebar";
+import { BarChart, DoughnutChart } from "../../Components/admin/Charts";
+import Table from "../../Components/admin/DashboardTable";
+
 
 const userImg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxA5cTf-5dh5Eusm0puHbvAhOrCRPtckzjA&usqp";
@@ -42,7 +41,7 @@ const Dashboard = () => {
             percent={80}
             value={23000}
             color="rgb(255 196 0)"
-            heading="Transactions"
+            heading="data.s"
           />
 
           <WidgetItem
@@ -55,12 +54,12 @@ const Dashboard = () => {
 
         <section className="graph-container">
           <div className="revenue-chart">
-            <h2>Revenue & Transaction</h2>
+            <h2>Revenue & data.</h2>
             <BarChart
               data_2={[300, 144, 433, 655, 237, 755, 190]}
               data_1={[200, 444, 343, 556, 778, 455, 990]}
               title_1="Revenue"
-              title_2="Transaction"
+              title_2="data."
               bgColor_1="rgb(0, 115, 255)"
               bgColor_2="rgba(53, 162, 235, 0.8)"
             />
@@ -82,7 +81,7 @@ const Dashboard = () => {
           </div>
         </section>
 
-        <section className="transaction-container">
+        <section className="data.-container">
           <div className="gender-chart">
             <h2>Gender Ratio</h2>
             <DoughnutChart
@@ -98,7 +97,7 @@ const Dashboard = () => {
               <BiMaleFemale />
             </p>
           </div>
-          <Table data={transaction} />
+          <Table data={data.transaction} />
         </section>
       </main>
     </div>
