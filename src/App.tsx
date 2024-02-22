@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import "./App.css"
+
 import { lazy, Suspense } from "react";
 import Loader from "./Components/loader";
 const Home = lazy(() => import("./pages/home"))
 const Search = lazy(() => import('./pages/search'))
 const Cart = lazy(() => import("./pages/cart"))
-// importing admin route
+// importing admin routes
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const Products = lazy(() => import("./pages/admin/products"));
 const Customers = lazy(() => import("./pages/admin/customers"));
@@ -17,28 +17,23 @@ const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
 const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
 const Toss = lazy(() => import("./pages/admin/apps/toss"));
 const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
-const ProductManagement = lazy(
-  () => import("./pages/admin/management/productmanagement")
-);
-const TransactionManagement = lazy(
-  () => import("./pages/admin/management/transactionmanagement")
-);
+const ProductManagement = lazy(() => import("./pages/admin/management/productmanagement"));
+const TransactionManagement = lazy(() => import("./pages/admin/management/transactionmanagement"));
+import Header from './Components/Header';
 function App() {
 
   return (
     <Router>
       {/* Header */}
-      <Suspense fallback={<Loader/>}>
+      <Header />
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
-{/* admin routes  */}
-          <Route
-            // element={
-            //   <ProtectedRoute isAuthenticated={true} adminRoute={true} isAdmin={true} />
-            // }
-          >
+          {/* admin routes  */}
+          {/* element={<ProtectedRoute isAuthenticated={true} adminRoute={true} isAdmin={true} />}  */}
+          <Route >
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/product" element={<Products />} />
             <Route path="/admin/customer" element={<Customers />} />
@@ -51,15 +46,11 @@ function App() {
             <Route path="/admin/app/coupon" element={<Coupon />} />
             <Route path="/admin/app/stopwatch" element={<Stopwatch />} />
             <Route path="/admin/app/toss" element={<Toss />} />
-
             {/* Management */}
             <Route path="/admin/product/new" element={<NewProduct />} />
-
             <Route path="/admin/product/:id" element={<ProductManagement />} />
-
             <Route path="/admin/transaction/:id" element={<TransactionManagement />} />
           </Route>;
-
         </Routes>
       </Suspense>
     </Router>
