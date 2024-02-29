@@ -35,4 +35,33 @@
   padding: 1rem;
   flex: none;
   @include flex(column, flex-start, center, 4px);
+  position: relative;
+  img {
+    @include square(calc(18.65rem - 3rem));
+    object-fit: cover;
+    margin: 1rem;
+  }
+  span {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  div {
+    position: absolute;
+    @include square(100%);
+    top: 0;
+    left: 0;
+    background: #0000006b;
+    @include flex;
+    button {
+      @include flex;
+      @include square(3rem);
+      border-radius: 100%;
+      border: none;
+      background: $color3;
+      cursor: pointer;
+      color: $color1;
+      font-size: 1.1rem;
+      transition: all 0.3s ease-in-out;
+    }
+  }
 }
